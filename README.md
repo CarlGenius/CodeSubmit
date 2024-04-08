@@ -83,6 +83,8 @@ Collecting package metadata (current_repodata.json): / Retrying (Retry(total=2, 
 
 则删除 */root/.condarc* 文件当中所有内容，并保存退出
 
+随后再次创建环境，并安装模型依赖包
+
 ```shell
 conda activate chatglm3
 python -m pip install --upgrade pip
