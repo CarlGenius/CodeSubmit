@@ -95,7 +95,7 @@ pip install -r requirements.txt
 
 # ChatGML3模型下载
 
-**严重注意：**阿里云不支持huggingface！！！所以此处使用的是魔搭
+**严重注意：** 阿里云不支持huggingface！！！所以此处使用的是魔搭
 
 ```shell
 cd /mnt/workspace
@@ -279,7 +279,7 @@ which python
 !CUDA_VISIBLE_DEVICES=0 /opt/conda/envs/chatglm3/bin/python finetune_hf.py  data/AdvertiseGen_fix  /mnt/workspace/chatglm3-6b  configs/lora.yamlti
 ```
 
-**注：**如果只有一块显卡，要将 *CUDA_VISIBLE_DEVICES* 置为0（1时仅使用cpu进行计算）
+**注：** 如果只有一块显卡，要将 *CUDA_VISIBLE_DEVICES* 置为0（1时仅使用cpu进行计算）
 
 # 使用心里健康数据微调模型
 
@@ -357,7 +357,7 @@ def convert_adgen(data_dir: Union[str, Path], save_dir: Union[str, Path]):
 convert_adgen('data/MeatalHealth', 'data/MeatalHealth_fix')
 ```
 
-**注：**主要注意更换*json*文件目录，以及该文件的用户和回答的*keys*是否更换
+**注：** 主要注意更换*json*文件目录，以及该文件的用户和回答的*keys*是否更换
 
 ## 执行微调
 
@@ -367,5 +367,5 @@ convert_adgen('data/MeatalHealth', 'data/MeatalHealth_fix')
 !CUDA_VISIBLE_DEVICES=0 /opt/conda/envs/chatglm3/bin/python finetune_hf.py  data/MeatalHealth_fix  /mnt/workspace/chatglm3-6b  configs/lora.yaml
 ```
 
-**注：**需要更改*lora.yaml*当中的部分参数，否则可能运行困难
+**注：** 需要更改*lora.yaml*当中的部分参数，否则可能运行困难
 
