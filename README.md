@@ -374,5 +374,7 @@ convert_adgen('data/MeatalHealth', 'data/MeatalHealth_fix')
 !CUDA_VISIBLE_DEVICES=0  /opt/conda/envs/chatglm3/bin/python inference_hf.py output/checkpoint-3000/ --prompt "Due to exam preparation causing high stress, I have insomnia at night."
 ```
 
+# 总结
 
+通过该项目，简单复习了一下 *ubuntu* 的相关操作，*conda* 命令相关报错的处理，*json* 文件格式的保存与读取中存在的坑， *LLM* (此处使用ChatGLM3-6b)的本地部署，*LLM* 的微调，相关NLP开源数据集的开放网址，*GPU* 资源不够时减小训练参数量的方法
 
