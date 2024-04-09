@@ -27,7 +27,7 @@ sudo cp sources.list sources.list.backup
 sudo vim sources.list
 ```
 
-**注：**[镜像源网址](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)，将该网址覆盖 *sources.list* 文件
+**注：** [镜像源网址](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)，将该网址覆盖 *sources.list* 文件
 
 ```shell
 sudo apt update
@@ -293,22 +293,19 @@ which python
 import json
 
 
-data_list = [
-    json.loads(line) for line in open('./MeatalHealth/combined_dataset.json', 'r', encoding='utf-8')
-]
+with open('./MeatalHealth/combined_dataset.json', 'r') as f:
+    lines = f.readlines()
 
-# 此处比例参考前面的广告数据集比例
-split_ratio = 0.00934
-split_point = int(len(data_list) * split_ratio)
+first_file_lines = lines[:300]
+remaining_lines = lines[300:]
 
-data_part1 = data_list[:split_point]
-data_part2 = data_list[split_point:]
-print(len(data_part1), len(data_part2))
+with open('./MeatalHealth/dev.json', 'w') as f:
+    for line in first_file_lines:
+        f.write(line)
 
-with open('./MeatalHealth/dev.json', 'w', encoding='utf-8') as file:
-    json.dump(data_part1, file, ensure_ascii=False, indent=4)
-with open('./MeatalHealth/train.json', 'w', encoding='utf-8') as file:
-    json.dump(data_part2, file, ensure_ascii=False, indent=4)
+with open('./MeatalHealth/train.json', 'w') as f:
+    for line in remaining_lines:
+        f.write(line)
 ```
 
 将 *lora_finetune.ipynb* 中的切割数据集修改为如下code
@@ -368,4 +365,14 @@ convert_adgen('data/MeatalHealth', 'data/MeatalHealth_fix')
 ```
 
 **注：** 需要更改*lora.yaml*当中的部分参数，否则可能运行困难
+
+## 使用微调数据集进行推理
+
+双引号中内容可进行适当更改
+
+```python
+!CUDA_VISIBLE_DEVICES=0  /opt/conda/envs/chatglm3/bin/python inference_hf.py output/checkpoint-3000/ --prompt "Due to exam preparation causing high stress, I have insomnia at night."
+```
+
+
 
