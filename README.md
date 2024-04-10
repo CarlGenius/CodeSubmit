@@ -559,7 +559,7 @@ The key to promoting students' learning and development is to create an environm
 以上是一些建议,希望能对你有所帮助。
 ```
 
-## 与心理学无关得问题
+## 与心理学无关的问题
 
 ### 预训练前
 
